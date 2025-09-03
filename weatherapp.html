@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Weather App</title>
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="weatherstyles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Weather App</h1>
+
+            <div class="input-group">
+                <input type="text" id="location-input" class="form-control" placeholder="Enter Location (city)" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="weather-fetch-button">Get Weather</button>
+                </div>
+            </div>
+
+            <div class="row row-cols-sm-1 row-cols-lg-2 justify-content-center">
+                <div id="weather-display" class="weather-card col-sm-12 col-md-5 me-5">
+                    <div class="weather-icon" id="weather-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+
+                    <div id="location-name" class="location">Loading...</div>
+                    <div id="temperature" class="temp"><i class="fas fa-thermometer-half"></i> -- °C</div>
+                    
+                    <div class="addedinfogrid">    
+                        <div id="apparent-temp">Feels like: <b>-- °C</b></div>
+                        <div id="min-max-temp">Min: <b>-- °C</b>, Max: <b>-- °C</b></div>
+                        <div id="avg-temp">Avg. Temperature: <b>-- °C</b></div>
+                        <div id="uv-index">Max UV Index: <b>--</b></div>
+                        <div id="rel-humidity">Humidity: <b>-- %</b></div>
+                        <div id="precip">Precipitation: <b>-- %</b></div>
+                        <div id="cloud-cover">Cloud Cover: <b>-- %</b></div>
+                    </div>
+                </div>
+
+                <div class="weather-card col-sm-12 col-md-5 row-cols-1 justify-content-center ms-5">
+                    <div class="sunset-sunrise">
+                        <div>
+                            <p>Sunrise</p>
+                            <div id="sunrise-time" class="sunrise-time">--</div>
+                        </div>
+                        <div>
+                            <p>Sunset</p>
+                            <div id="sunset-time" class="sunset-time">--</div>
+                        </div>
+                    </div>
+
+                    <div class="hourly-forecast" id="hourly-forecast">
+                        <!-- Through JavaScript, hourly weather data will be placed here. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
