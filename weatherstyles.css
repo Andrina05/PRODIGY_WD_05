@@ -10,7 +10,7 @@ body {
 
 .weather-card {
     background-color: white;
-    padding: 30px;
+    padding: 25px;
     margin: 15px;
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -55,17 +55,25 @@ body {
 }
 
 .hourly-item {
-    width: 18%;
-    min-width: 80px;
-    background-color: white;
+    width: 85px;
+    min-width: 85px;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.hourly-item img {
-    width: 40px;
+.dark {
+    background-color: darkblue;
+    color: white;
+}
+.moderate {
+    background-color:dodgerblue;
+    color: white;
+}
+.light {
+    background-color:cyan;
+    color: black;
 }
 
 .sunset-sunrise {
