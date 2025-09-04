@@ -45,29 +45,18 @@ const updateWeatherUI = data => {
     const dailyData = data.daily;
     const hourlyData = data.hourly;
 
-    console.log("Current:",data.current);
-    console.log("Daily:",data.daily);
-    console.log("Hourly:",data.hourly);
+    // console.log("Current:",data.current);
+    // console.log("Daily:",data.daily);
+    // console.log("Hourly:",data.hourly);
 
-    // Match the format in the fetched API JSON data.
-    let currentTime = weather.time;
-    console.log("Time:", currentTime);
-
+    // Obtain the current time and hour.
+    const currentTime = weather.time;
     const roundedTime = currentTime.slice(0, 14)+'00';
-    console.log("Rounded Time:", roundedTime);
-
     const currentTimeIndex = hourlyData.time.indexOf(`${roundedTime}`);
-    console.log("Index of current time:", currentTimeIndex);
-
     const currentHour = parseInt(currentTime.slice(11, 13));
-    console.log("Current Hour:", currentHour);
-
-    // const locTime = weather.time;
-    // console.log("Location Time:",locTime);
 
     // For testing, a time was selected from the JSON file. It is no longer used.
     // const testingTime = "2025-08-29T22:00";
-
     // Obtained index of current time from the JSON file during initial test; also defined a 'new hour' to test rounding the hours past midnight
     // const currentTimeIndex = hourlyData.time.indexOf(`${testingTime}`);
     // let newHour = 20;
@@ -143,7 +132,6 @@ const updateWeatherUI = data => {
     let assignedHour = currentHour;
     for (let i=currentTimeIndex+1; i<=currentTimeIndex+5; i++) {
         assignedHour = (assignedHour + 1) % 24;
-        console.log("Assigned Hour:", assignedHour);
         let hourDiv = document.createElement('div');
 
         if (assignedHour >= 8 && assignedHour <= 18) {
