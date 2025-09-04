@@ -1,5 +1,5 @@
 body {
-    background-color: #f7f7f7;
+    background-color:azure;
     font-family: Arial, sans-serif;
 }
 
@@ -9,11 +9,21 @@ body {
 }
 
 .weather-card {
-    background-color: white;
     padding: 25px;
-    margin: 15px;
+    margin: 15px 5px;
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+.day {
+    background-image: url("images/daybg.png");
+}
+.dawndusk {
+    background-image: url("images/dawnduskbg.png");
+    color: white;
+}
+.night {
+    background-image: url("images/nightbg.png");
+    color: white;
 }
 
 .weather-icon {
@@ -37,6 +47,7 @@ body {
 
 #apparent-temp, #min-max-temp, #avg-temp, #uv-index, #rel-humidity, #precip, #cloud-cover {
     background-color:powderblue;
+    color: black;
     padding: 5px;
     margin: 5px;
     border-radius: 8px;
@@ -50,17 +61,19 @@ body {
 .hourly-forecast {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow-x: auto;
 }
 
 .hourly-item {
-    width: 85px;
-    min-width: 85px;
-    padding: 10px;
+    width: 90px;
+    min-width: 90px;
+    padding: 10px 3px;
+    margin: 5px 5px; 
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    font-size: 20px;
 }
 
 .dark {
@@ -79,20 +92,35 @@ body {
 .sunset-sunrise {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.sunset-sunrise img {
+    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .sunset-sunrise div {
-    background-color: white;
+    background-color: cornflowerblue;
     padding: 10px;
+    margin: 5px 5px;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 95px;
-    min-width: max-content;
+    width: fit-content;
+    min-width: fit-content;
 }
 
 #sunrise-time,
 #sunset-time {
     font-size: 18px;
     background-color: powderblue;
+    color: black;
+}
+
+@media (min-width: 766px) and (max-width:993px) {
+    .sunset-sunrise div {
+        padding: 5px;
+        margin: 2px;
+    }
 }

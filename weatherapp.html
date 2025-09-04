@@ -22,36 +22,37 @@
 
             <div class="row row-cols-sm-1 row-cols-lg-2 justify-content-center">
                 <div id="weather-display" class="weather-card col-sm-12 col-md-5 me-5">
-                    <div class="weather-icon" id="weather-icon">
-                        <i class="fas fa-cloud-sun"></i>
-                    </div>
+                    <div class="weather-icon" id="weather-icon"></div>
 
                     <div id="location-name" class="location">Loading...</div>
                     <div id="temperature" class="temp"><i class="fas fa-thermometer-half"></i> -- °C</div>
                     
                     <div class="addedinfogrid">    
                         <div id="apparent-temp">Feels like: <b>-- °C</b></div>
-                        <div id="min-max-temp">Max: <b>-- °C</b>, Min: <b>-- °C</b></div>
-                        <div id="avg-temp">Avg. Temperature: <b>-- °C</b></div>
+                        <div id="min-max-temp">
+                            <i class="fa fa-thermometer-full" aria-hidden="true" title="Max. Temp."></i> <b>-- °C</b>,
+                            <i class="fa fa-thermometer-empty" aria-hidden="true" title="Min. Temp."></i> <b>-- °C</b></div>
+                        <div id="avg-temp">Avg. Temp.: <b>-- °C</b></div>
                         <div id="uv-index">Max UV Index: <b>--</b></div>
-                        <div id="rel-humidity">Humidity: <b>-- %</b></div>
-                        <div id="precip">Precipitation: <b>-- mm</b></div>
+                        <div id="rel-humidity"><i class="fas fa-water"></i> &nbsp; Humidity: <b>-- %</b></div>
+                        <div id="precip"> <i class="fas fa-cloud-showers-heavy"></i> &nbsp; Precipitation: <b>-- mm</b></div>
                         <div id="cloud-cover">Cloud Cover: <b>-- %</b></div>
                     </div>
                 </div>
 
-                <div class="weather-card col-sm-12 col-md-5 row-cols-1 justify-content-center ms-5">
+                <div id="weather-forecast-info" class="weather-card col-sm-12 col-md-5 row-cols-1 justify-content-center ms-5">
                     <div class="sunset-sunrise">
                         <div>
-                            <p>Sunrise</p>
-                            <div id="sunrise-time" class="sunrise-time">--</div>
+                            <img src="images/sunrise.png" alt="Sunrise" title="Sunrise">
+                            <div id="sunrise-time" class="sunrise-time font-weight-bold">--</div>
                         </div>
                         <div>
-                            <p>Sunset</p>
-                            <div id="sunset-time" class="sunset-time">--</div>
+                            <img src="images/sunset.png" alt="Sunset" title="Sunset">
+                            <div id="sunset-time" class="sunset-time font-weight-bold">--</div>
                         </div>
                     </div>
 
+                    <h4>Hourly Forecast:</h4>
                     <div class="hourly-forecast" id="hourly-forecast">
                         <!-- Through JavaScript, hourly weather data will be placed here. -->
                     </div>
