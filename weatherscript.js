@@ -58,7 +58,6 @@ const updateWeatherUI = data => {
 
     // Obtain the current time and hour.
     const currentTime = weather.time;
-    console.log("Fetched Time:", currentTime);
     const displayTime = currentTime.slice(0, 10)+' '+currentTime.slice(11);
     const roundedTime = currentTime.slice(0, 14)+'00';
     const currentTimeIndex = hourlyData.time.indexOf(`${roundedTime}`);
