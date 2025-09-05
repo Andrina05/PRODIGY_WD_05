@@ -116,7 +116,7 @@ const updateWeatherUI = data => {
     }
 
     // Current Weather
-    document.getElementById('location-name').textContent = ((locationInput == '') ? `Lat: ${data.latitude.toFixed(2)}, Lon: ${data.longitude.toFixed(2)}` : locationInput);
+    document.getElementById('location-name').textContent = ((locationInput == '') ? `At Your Location` : locationInput);
     document.getElementById('loc-time').textContent = displayTime;
     document.getElementById('temperature').innerHTML = `<i class="fas fa-thermometer-half"></i> ${weather.temperature_2m} °C`;
     document.getElementById('apparent-temp').innerHTML =  `Feels like <b>${weather.apparent_temperature}</b> °C`;
@@ -198,7 +198,7 @@ document.getElementById('weather-fetch-button').addEventListener('click', async 
             alert('Location not found');
         }
     } else {
-        alert("No data found. Please try again with a valid location.");
+        getUserLocation();
     }
 });
 
