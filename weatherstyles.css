@@ -4,14 +4,14 @@ body {
 }
 
 .container {
-    margin-top: 35px;
+    margin-top: 30px;
     text-align: center;
 }
 
 .weather-card {
     padding: 25px;
     margin: 15px 5px;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 .day {
