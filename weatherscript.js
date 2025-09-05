@@ -1,4 +1,5 @@
 // A JavaScript code to make the app functional
+// Tested with Live Server; the HTML file was opened in VS code, followed by clicking on 'Go Live'.
 
 // Get the weather items
 const weatherDisplay = document.getElementById('weather-display');
@@ -7,7 +8,6 @@ const weatherIndicator = document.getElementById('weather-icon')
 
 // // Path to the JSON file (no longer used; instead, data fetched from API from line 31.)
 // const jsonFilePath = 'testingdata.json';
-
 // // Fetch data from JSON file; to have the app be functional for testing, the Live Server extension for VS Code will be needed.
 // // To test the code in VS Code once the extension has been installed, click on the 'Go Live' button on the bottom right corner.
 // fetch(jsonFilePath).then(response => {
@@ -27,30 +27,39 @@ const weatherIndicator = document.getElementById('weather-icon')
 // });
 
 
-// URL to be used in final app
+// URL to be used in final app; Open Meteo API is used here.
 const baseURL = "https://api.open-meteo.com/v1/forecast";
 const weather_params = "daily=sunrise,sunset,temperature_2m_max,temperature_2m_min,temperature_2m_mean,uv_index_max&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,cloud_cover&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,cloud_cover&timezone=auto";
 
 async function fetchWeatherData(lat, long) {
     const weatherURL = `${baseURL}?latitude=${lat}&longitude=${long}&${weather_params}`;
-    const response = await fetch(weatherURL);
-    const data = await response.json();
-    updateWeatherUI(data);
+    fetch(weatherURL).then(response => {
+        if(!response.ok) {
+            alert("Something went wrong. Please try reloading the page.")
+            throw new Error(`Oops! Something went wrong. HTTP Error ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        updateWeatherUI(data);
+    })
+    .catch(error => {
+        alert("Failed to fetch or parse weather data. Please try again later.");
+        console.log("Error fetching/parsing JSON data:", error);
+    })
 }
 
 const updateWeatherUI = data => {
     // Initialize required values
-    const locationInput = document.getElementById('location-input').textContent;
+    const locationInput = document.getElementById('location-input').value;
     const weather = data.current;
     const dailyData = data.daily;
     const hourlyData = data.hourly;
 
-    // console.log("Current:",data.current);
-    // console.log("Daily:",data.daily);
-    // console.log("Hourly:",data.hourly);
-
     // Obtain the current time and hour.
     const currentTime = weather.time;
+    console.log("Fetched Time:", currentTime);
+    const displayTime = currentTime.slice(0, 10)+' '+currentTime.slice(11);
     const roundedTime = currentTime.slice(0, 14)+'00';
     const currentTimeIndex = hourlyData.time.indexOf(`${roundedTime}`);
     const currentHour = parseInt(currentTime.slice(11, 13));
@@ -107,7 +116,8 @@ const updateWeatherUI = data => {
     }
 
     // Current Weather
-    document.getElementById('location-name').textContent = ((locationInput === '') ? `Lat: ${data.latitude.toFixed(2)}, Lon: ${data.longitude.toFixed(2)}` : locationInput);
+    document.getElementById('location-name').textContent = ((locationInput == '') ? `Lat: ${data.latitude.toFixed(2)}, Lon: ${data.longitude.toFixed(2)}` : locationInput);
+    document.getElementById('loc-time').textContent = displayTime;
     document.getElementById('temperature').innerHTML = `<i class="fas fa-thermometer-half"></i> ${weather.temperature_2m} °C`;
     document.getElementById('apparent-temp').innerHTML =  `Feels like <b>${weather.apparent_temperature}</b> °C`;
     
@@ -158,7 +168,6 @@ const updateWeatherUI = data => {
     }
 }
 
-
 // Fetch the user's current location
 async function getUserLocation() {
     if (navigator.geolocation) {
@@ -167,7 +176,7 @@ async function getUserLocation() {
             const long = userPosition.coords.longitude;
             await fetchWeatherData(lat, long);
         }, (error) => {
-            alert("Failed to get location. Error:", error);
+            alert("Failed to get location.", error);
         });
     } else {
         alert("Geolocation is not supported by the currently used browser.");
